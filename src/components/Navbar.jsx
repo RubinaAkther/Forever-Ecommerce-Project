@@ -5,7 +5,7 @@ import { ShopContext } from '../context/ShopContext';
 
 const Navbar = () => {
   const [visible, setVisible] = useState();
-  const { setShowSearch } = useContext(ShopContext);
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
   return (
     <div className="flex items-center justify-between py-5 font-medium">
       <Link to="/">
@@ -32,7 +32,8 @@ const Navbar = () => {
         </NavLink>
       </ul>
       <div className="flex items-center gap-6">
-        <img onClick={() => setShowSearch(true)}
+        <img
+          onClick={() => setShowSearch(true)}
           src={assets.search_icon}
           className="w-5 cursor-pointer"
           alt="Search Icon"
@@ -61,7 +62,7 @@ const Navbar = () => {
             className="w-4 absolute right-[-5px] bottom-[-5px]
           text-center leading-4 bg-black text-white aspect-square rounded-full text-[8px]"
           >
-            10
+            {getCartCount()}
           </p>
         </Link>
         <img
